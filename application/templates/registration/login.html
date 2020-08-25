@@ -22,7 +22,7 @@
                         
                     </div>
     
-                    <div class="col-md-6 p-5 align-self-center bg-info">
+                    <div class="col-md-6 p-5 align-self-center bg btn-secondary">
     
                         <h3 class="font-weight-bold text-center"> LOGIN HERE </h3>
     
@@ -30,11 +30,12 @@
                             {% csrf_token%}
                             {{ form|crispy }}
                             
-                            <p class="text-center"><a  href="">Forgot password?</a></p>
+                            
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-info btn-rounded">Login</button>
                             </div>
-                            <p class="text-center">Don't have an account?  <a href="">Register</a></p>
+                            <p class="text-center">Don't have an account?  <a href=""> Register</a></p>
+                            <p class="text-center">Forgot password?<a  href="{% url 'password_reset' %}">Reset password</a></p>
     
     
                         </form>
