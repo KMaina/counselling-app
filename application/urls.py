@@ -7,8 +7,6 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     url(r'^$', views.home, name='home'),
-
-    url('^', include('django.contrib.auth.urls')),
     
 ]
 
