@@ -155,4 +155,12 @@ LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'application.User'
 
+#SMTP Configuration
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mwasjopa@gmail.com'
+EMAIL_HOST_PASSWORD = 'jopa2016!!'
+# DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+
 django_heroku.settings(locals())
