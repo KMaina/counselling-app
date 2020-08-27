@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     url(r'^$', views.home, name='home'),
+    url(r'^c_gruop/', views.c_gruop, name='c_group')
 ]
 
 if settings.DEBUG:
