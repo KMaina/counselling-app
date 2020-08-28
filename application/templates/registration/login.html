@@ -1,54 +1,45 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% load static %}
-{% load bootstrap4 %}
-{% block styles %}
-    {{super}}
-    {% bootstrap_css%}
-{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% load crispy_forms_tags %} {% load static %} {% load bootstrap4 %} {% block styles %} {{super}} {% bootstrap_css%} {% endblock %} {% block content %}
 <br><br><br><br><br><br>
-    <div class="container my-5">
-    
-        <section>
-    
-            <div class="card mb-4">
-    
-                <div class="row">
-    
-                    <div class="col-md-6">
-                
-                        <img src="{% static 'images/login.svg' %}" width=100% height=100% alt="My image">
-                        
-                    </div>
-    
-                    <div class="col-md-6 p-5 align-self-center bg-info">
-    
-                        <h3 class="font-weight-bold text-center"> LOGIN HERE </h3>
-    
-                        <form action="" method="POST" class="form-group">
-                            {% csrf_token%}
-                            {{ form|crispy }}
-                            
-                            <p class="text-center"><a  href="">Forgot password?</a></p>
-                            <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-info btn-rounded">Login</button>
-                            </div>
-                            <p class="text-center">Don't have an account?  <a href="">Register</a></p>
-    
-    
-                        </form>
-    
-                    </div>
-    
+<div class="container my-5">
+
+    <section>
+
+        <div class="card mb-4">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <img src="{% static 'images/login.svg' %}" width=100% height=100% alt="My image">
+
                 </div>
-    
+
+                <div class="col-md-6 p-5 align-self-center bg-info">
+
+                    <h3 class="font-weight-bold text-center"> LOGIN HERE </h3>
+
+                    <form action="" method="POST" class="form-group" novalidate>
+                        {% csrf_token%}
+
+                        <input type="hidden" name="next" value="{{ next }}"> {{ form|crispy }}
+
+                        <p class="text-center"><a href="">Forgot password?</a></p>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-info btn-rounded">Login</button>
+                        </div>
+                        <p class="text-center">Don't have an account? <a href="{% url 'signup' %}">Register</a></p>
+
+
+                    </form>
+
+                </div>
+
             </div>
-    
-        </section>
-    
-    </div>
-   
+
+        </div>
+
+    </section>
+
+</div>
+
 {% endblock %}
-
-
