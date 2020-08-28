@@ -1,5 +1,4 @@
 {% extends "base.html" %} {% load crispy_forms_tags %} {% load static %} {% load bootstrap4 %} {% block styles %} {{super}} {% bootstrap_css%} {% endblock %} {% block content %}
-<br><br><br><br><br><br>
 <div class="container my-5">
 
     <section>
@@ -8,15 +7,17 @@
 
             <div class="row">
 
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
 
-                    <img src="{% static 'images/login.svg' %}" width=100% height=100% alt="My image">
+                    <img src="" width=100% mt-5 alt="My image">
 
-                </div>
+                </div> -->
 
-                <div class="col-md-6 p-5 align-self-center bg-info">
-
-                    <h3 class="font-weight-bold text-center"> REGISTER HERE </h3>
+                <div class="col-md-6 p-5 align-self-center">
+                    <div class="text-center">
+                        <h4 class="font-weight-bold text-center">REGISTER HERE </h4>
+                        <img src="{% static 'images/logo.jpeg' %}" alt="My image">
+                    </div>
 
                     <form method="POST" class="form-group">
                         {% csrf_token%}
