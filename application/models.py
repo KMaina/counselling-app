@@ -1,23 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from django.contrib.auth.models import AbstractUser
+from django.utils.html import mark_safe, escape
 
 
-class Profile(models.Model):
-    ''' extended User model '''
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    photo = models.ImageField(default='default.jpg', upload_to='avatars/')
-    bio = models.TextField(max_length=500, blank=True, default=f'Hello, I am new here!')
+class User(AbstractUser):
+    is_client = models.BooleanField(default=False)
+    is_counsellor = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f'{self.user.username}'
+class Client(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    medication = models.CharField(max_length=255, blank=True)
+    group = models.ForeignKey('SupportGroup', on_delete=models.CASCADE, null=True)
+    counsellor = models.ForeignKey('Counsellor', on_delete=models.CASCADE)
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+class SupportGroup(models.Model):
+    name = models.CharField(max_length=255)
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+class Counsellor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
