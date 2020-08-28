@@ -1,3 +1,38 @@
+.header{
+    background-image: url('https://images.pexels.com/photos/2467396/pexels-photo-2467396.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center; 
+    height: 500px;
+}
+.pace{
+    text-align: center;
+    color: beige;
+    padding-top: 10%;
+    font-size: 40px;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.match{
+    color: black;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.text-center {
+  text-align: center;
+}
 body,
 html,
 main {
@@ -20,12 +55,6 @@ main {
 } */
 
 
-.header{
-  
-	width: 100%;
-	min-height: 85px;
-	
-}
 .nav-item {
   margin-left: 4%;
   margin-right: 4%;
