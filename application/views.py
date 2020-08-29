@@ -11,6 +11,12 @@ class SignUpView(TemplateView):
     template_name = 'django_registration/signup.html'
 
 
+def index(request):
+    return render(request, 'index.html')
+  
+def counsellorhome(request):
+    return render(request, 'homecounsellor.html')
+  
 def home(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
@@ -56,4 +62,3 @@ class CounsellorSignUpView(CreateView):
 
 def counsellor_home(request):
     return render(request, 'counsellor/index.html')
-
