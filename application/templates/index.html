@@ -1,2 +1,78 @@
 {% extends 'base.html' %}
-<p>Templating works!</p>
+{% load bootstrap4 %}
+ 
+{% block content %}
+
+    {{super}}
+
+    <div class="header" >
+
+        <p class="pace">You deserve to be happy</p>
+        <div class="text-center">
+            <a href="#"><button type="button" class="btn btn-lg btn-primary" disabled>
+                GET STARTED
+            </button></a>
+           
+        </div>
+        
+    </div>
+    <div class="match">
+        <p class="text-center">We'll match you to a counsellor that can help with...</p>
+    </div>
+   <div class="container" style="padding-top: 20px;">
+        <div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="https://images.pexels.com/photos/4013911/pexels-photo-4013911.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="...">
+
+                    <div class="centered">
+                        <h2>Depression</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="https://images.pexels.com/photos/3261007/pexels-photo-3261007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        class="card-img-top" alt="...">
+                    <div class="centered">
+                        <h2>Grief</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1475609471617-0ef53b59cff5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
+                    <div class="centered">
+                        <h2>Anxiety</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="https://images.pexels.com/photos/3760790/pexels-photo-3760790.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="...">
+                    <div class="centered">
+                        <h2>Anger</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1580141958900-f704c410ba0e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        class="card-img-top" alt="...">
+                    <div class="centered">
+                        <h2>Stress</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="https://images.pexels.com/photos/247314/pexels-photo-247314.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        class="card-img-top" alt="...">
+                    <div class="centered">
+                        <h2>...and more</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}
