@@ -59,3 +59,136 @@ a.button3:hover{
   transform: translate(-50%, -50%);
     
 }
+.header{
+    background-image: url('https://images.pexels.com/photos/2467396/pexels-photo-2467396.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center; 
+    height: 500px;
+}
+.pace{
+    text-align: center;
+    color: beige;
+    padding-top: 10%;
+    font-size: 40px;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.match{
+    color: black;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+body,
+html,
+main {
+  height: 100%;
+}
+/* #wave {
+  position: absolute;
+  height: 256.69px;
+  width: 1440.84px;
+  left: -1px;
+  top: -49px;
+  background: #e5e5e5;
+} */
+
+/* .wave{
+  background-image: url('/static/images/navbar.png');
+  padding-bottom: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+
+.nav-item {
+  margin-left: 4%;
+  margin-right: 4%;
+  color: black;
+}
+
+
+
+.nav-item:hover {
+  background-color: black;
+}
+
+/* MDI Specific CSS https://materialdesignicons.com/bootstrap*/
+.mdi::before {
+  font-size: 24px;
+  line-height: 14px;
+}
+.btn .mdi::before {
+  position: relative;
+  top: 4px;
+}
+.btn-xs .mdi::before {
+  font-size: 18px;
+  top: 3px;
+}
+.btn-sm .mdi::before {
+  font-size: 18px;
+  top: 3px;
+}
+.dropdown-menu .mdi {
+  width: 18px;
+}
+.dropdown-menu .mdi::before {
+  position: relative;
+  top: 4px;
+  left: -8px;
+}
+.nav .mdi::before {
+  position: relative;
+  top: 4px;
+}
+.navbar .navbar-toggle .mdi::before {
+  position: relative;
+  top: 4px;
+  color: rgb(61, 60, 60);
+}
+.breadcrumb .mdi::before {
+  position: relative;
+  top: 4px;
+}
+.breadcrumb a:hover {
+  text-decoration: none;
+}
+.breadcrumb a:hover span {
+  text-decoration: underline;
+}
+.alert .mdi::before {
+  position: relative;
+  top: 4px;
+  margin-right: 2px;
+}
+.input-group-addon .mdi::before {
+  position: relative;
+  top: 3px;
+}
+.navbar-brand .mdi::before {
+  position: relative;
+  top: 2px;
+  margin-right: 2px;
+}
+.list-group-item .mdi::before {
+  position: relative;
+  top: 3px;
+  left: -3px
+}
+/* MDI Specific CSS https://materialdesignicons.com/bootstrap*/
