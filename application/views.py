@@ -16,7 +16,10 @@ def counsel(request):
 
 def index(request):
     return render(request, 'index.html')
-  
+
+def c_gruop(request):
+    return render(request, 'c-group.html')
+
 def counsellorhome(request):
     return render(request, 'homecounsellor.html')
   
