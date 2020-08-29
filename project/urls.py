@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'', include('application.urls')),
     url(r'^accounts/', include('django_registration.backends.one_step.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/register/$', views.SignUpView.as_view(), name='signup'),
+    url(r'^accounts/signup/$', views.SignUpView.as_view(), name='signup'),
     path(r'^accounts/register/client/$', views.ClientSignUpView.as_view(), name='client_signup'),
     path(r'^accounts/register/counsellor/$', views.CounsellorSignUpView.as_view(), name='counsellor_signup'),
 ]

@@ -6,17 +6,16 @@ from django.conf.urls.static import static
 
 
 urlpatterns=[
-    url(r'^$', views.home, name='home'),
-    url(r'^c_gruop/', views.c_gruop, name='c_group')
-    url(r'^counsel/', views.counsel, name='counsel')
-    url(r'^index/$', views.index, name='index'),
-    url(r'^counsellor/$', views.counsellorhome, name='counsellorhome'),
+    url(r'^$', views.home, name='index'),
+    url(r'^join/$', views.join, name='join'),
+    url(r'^counsellors/list/$', views.counsel, name='counsellor_list'),
 
     #client urls
     url(r'^clients/home/$', views.client_home, name='client_home'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),
+    url(r'^counsellors/support_group/$', views.support_group, name='c_group'),
 ]
 
 if settings.DEBUG:

@@ -1,26 +1,6 @@
-{% extends 'base.html' %}
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Document</title>
-
-    {% block styles %}
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-     {% endblock %}
-</head>
-
-<body>
-  {% block content %}
+{% extends 'base.html' %} {% load static %}
+<!--  -->
+{% block content %}
 <!-- Team -->
 <section id="team" class="pb-5">
     <div class="container">
@@ -28,7 +8,7 @@
         <p class="section-title ">Face new challenges with help from someone you can trust. Whether you’re at home, school or work, Our counsellors are there to offer support, develop your goals, apply new skills, and build resiliency.</p>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" >
+                <div class="image-flip">
                     <div class="mainflip flip-0">
                         <div class="frontside">
                             <div class="card">
@@ -319,9 +299,3 @@
     </div>
 </section>
 {% endblock %}
-</body>
-</html>
-<!-- Team -->
-
-https://bit.ly/3lqg0uf
- 

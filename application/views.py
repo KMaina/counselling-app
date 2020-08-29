@@ -7,29 +7,24 @@ from .models import *
 from .forms import *
 
 
-
-class SignUpView(TemplateView):
-    template_name = 'django_registration/signup.html'
-
-def counsel(request):
-    return render(request, 'counsellors_list.html')
-
-def index(request):
-    return render(request, 'index.html')
-
-def c_gruop(request):
-    return render(request, 'c-group.html')
-
-def counsellorhome(request):
-    return render(request, 'homecounsellor.html')
-  
 def home(request):
+    if request.user.is_authenticated:
+        if request.user.is_counsellor:
+            return redirect('counsellor_home')
+    
+    return render(request, 'index.html')
+  
+def join(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
             return redirect('counsellor_home')
         else:
             return redirect('client_home')
     return render(request, 'choice.html')
+
+
+class SignUpView(TemplateView):
+    template_name = 'signup.html'
 
 
 #client views
@@ -50,6 +45,9 @@ class ClientSignUpView(CreateView):
 def client_home(request):
     return render(request, 'client/index.html')
 
+def counsel(request):
+    return render(request, 'counsellor/counsellors_list.html')
+
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
@@ -66,5 +64,10 @@ class CounsellorSignUpView(CreateView):
         login(self.request, user)
         return redirect('counsellor_home')
 
+@counsellor_required
 def counsellor_home(request):
-    return render(request, 'counsellor/index.html')
+    return render(request, 'counsellor/home.html')
+
+@counsellor_required
+def support_group(request):
+    return render(request, 'counsellor/support_group.html')
