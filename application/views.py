@@ -7,9 +7,12 @@ from .models import *
 from .forms import *
 
 
+
 class SignUpView(TemplateView):
     template_name = 'django_registration/signup.html'
 
+def counsel(request):
+    return render(request, 'counsellors_list.html')
 
 def index(request):
     return render(request, 'index.html')
