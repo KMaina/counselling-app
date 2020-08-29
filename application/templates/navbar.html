@@ -1,40 +1,29 @@
-
-     <nav class="navbar navbar-expand-lg navbar-dark bg-info" >
-        <img src="https://i.pinimg.com/originals/d5/22/f4/d522f44468cb792ccebf3524fcda3a9b.jpg" width="100" height="76">
-        <div class="container">
-            
-                
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse" id="navbar10">
-                <ul class="navbar-nav nav-fill w-100">
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#">Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#">Programmes</a>
-                    </li>
-                </ul>
-            </div>
+{% load static %}
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper white">
+            <a href="#!" class="brand-logo">
+                <img src="{% static 'images/logo.jpeg' %}" alt="logo" width=25%>
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/" class="black-text">Home</a></li>
+                <li><a href="#" class="black-text">Articles</a></li>
+                <li><a href="#" class="black-text">Programmes</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="btn waves-effect waves-light black-text">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'join' %}" class="btn waves-effect waves-light black-text">Join</a></li>
+                {% endif %}
+            </ul>
         </div>
-    
     </nav>
+</div>
 
-
-
-<script>
-    $(document).ready(function () {
-        $('.navbar-nav .nav-item').click(function () {
-            $('.navbar-nav .nav-item').removeClass('active');
-            $(this).addClass('active');
-        })
-    });
-</script>
+<ul class="sidenav center-align" id="mobile-demo">
+    <img src="{% static 'images/logo.jpeg' %}" alt="logo">
+    <hr>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Articles</a></li>
+    <li><a href="{% url 'join' %}" class="btn waves-effect waves-light black-text">Join</a></li>
+</ul>

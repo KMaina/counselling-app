@@ -1,4 +1,18 @@
-<h2>Welcome to the Wee Heard! <span class="icon-emo-happy"></span></h2>
-<p class="lead">
-    If you already have an account, go ahead and <a href="{% url 'login' %}">log in</a>. If you are new to Well Heard, get started by creating a <a href="{% url 'client_signup' %}">client account</a> or a <a href="{% url 'counsellor_signup' %}">counsellor account</a>.
-</p>
+{% extends 'base.html' %} {% block content %}
+
+<body>
+    <div class="container black-text">
+        <h1>Welcome to Well Heard! <span class="icon-emo-happy"></span></h1>
+        <p>
+            If you already have an account
+            <br>
+            <a class="btn waves-effect waves-light" href="{% url 'login' %}">log in</a>
+        </p>
+        <p>
+            If you are new to Well Heard, get started with
+            <br>
+            <a class="btn waves-effect waves-light" href="{% url 'client_signup' %}">client account</a> OR <a class="btn waves-effect waves-light" href="{% url 'counsellor_signup' %}">counsellor account</a>
+        </p>
+    </div>
+</body>
+{% endblock %}
