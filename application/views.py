@@ -71,3 +71,8 @@ def counsellor_home(request):
 @counsellor_required
 def support_group(request):
     return render(request, 'counsellor/support_group.html')
+
+@counsellor_required
+def client_group(request):
+    client = Client.objects.all()
+    return render(request, 'counsellor/client_group.html', {"client": client})
