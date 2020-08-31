@@ -12,9 +12,11 @@ class Client(models.Model):
     medication = models.CharField(max_length=255, blank=True)
     group = models.ForeignKey('SupportGroup', on_delete=models.CASCADE, null=True)
     counsellor = models.ForeignKey('Counsellor', on_delete=models.CASCADE)
+    
 
 class SupportGroup(models.Model):
     name = models.CharField(max_length=255)
 
 class Counsellor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+
