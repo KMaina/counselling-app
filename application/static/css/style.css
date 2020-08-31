@@ -203,13 +203,14 @@ a.button3:hover{
 .container {
   position: relative;
   text-align: center;
-  color: white;
+  color: #000;
 }
 .centered {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
 }
 
 .match{
@@ -319,3 +320,18 @@ main {
   left: -3px
 }
 /* MDI Specific CSS https://materialdesignicons.com/bootstrap*/
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
