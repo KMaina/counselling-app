@@ -3,6 +3,8 @@ from django.db import transaction
 from django.contrib.auth.forms import UserCreationForm
 from django.forms.utils import ValidationError
 from .models import *
+from tempus_dominus.widgets import  DateTimePicker
+
 
 
 class CounsellorSignUpForm(UserCreationForm):
@@ -45,3 +47,12 @@ class ClientSignUpForm(UserCreationForm):
         user.is_client = True
         user.save()
         return user
+
+
+class EditForm(forms.ModelForm):
+    time = forms.DateTimeField(widget=DateTimePicker(), required=False)
+    group = forms.ModelChoiceField(required=False,queryset=SupportGroup.objects ,empty_label=None)
+    link = forms.CharField(required=False)
+    class Meta:
+        model = Client
+        fields = ['medication', 'group', 'time', 'link']
