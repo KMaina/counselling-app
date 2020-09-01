@@ -34,6 +34,7 @@ DEBUG = config('DEBUG', cast=bool)
 INSTALLED_APPS = [
     'application',
     'bootstrap4',
+    'tempus_dominus',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

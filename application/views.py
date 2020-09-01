@@ -13,7 +13,8 @@ def home(request):
             return redirect('counsellor_home')
     
     return render(request, 'index.html')
-  
+
+
 def join(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
@@ -48,6 +49,12 @@ def client_home(request):
 def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
 
+def client_med(request):
+    medication = Client.objects.all()
+    return render(request, 'counsellor/client-med.html', {'medication':medication})
+
+def client(request):
+    return render (request, 'client/client.html')
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
@@ -76,3 +83,23 @@ def support_group(request):
 def client_group(request):
     client = Client.objects.all()
     return render(request, 'counsellor/client_group.html', {"client": client})
+def edit(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=id)
+    dr = Counsellor.objects.get(user=current_user.id)
+    if request.method == 'POST':
+       form = EditForm(request.POST)
+       if form.is_valid():
+           edit = form.save(commit=False)
+           edit.user = client.user
+           edit.counsellor = dr
+           edit.save()
+       return redirect('display')
+    else:
+       form = EditForm()
+    return render(request, 'counsellor/counsellor_edit.html',{"form":form})
+
+def display(request):
+    sessions = Client.objects.filter(counsellor=request.user.id).all()
+    return render(request, 'counsellor/client-med.html',{'sessions':sessions})
+  
