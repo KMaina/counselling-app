@@ -48,6 +48,10 @@ def client_home(request):
 def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
 
+def client_med(request):
+    medication = Client.objects.all()
+    return render(request, 'counsellor/client-med.html', {'medication':medication})
+
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
@@ -71,3 +75,4 @@ def counsellor_home(request):
 @counsellor_required
 def support_group(request):
     return render(request, 'counsellor/support_group.html')
+

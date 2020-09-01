@@ -319,3 +319,6 @@ main {
   left: -3px
 }
 /* MDI Specific CSS https://materialdesignicons.com/bootstrap*/
+.pt-3-half {
+  padding-top: 1.4rem;
+  }

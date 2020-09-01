@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Editable table -->
+{% block content %}
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Clients' Medication</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <span class="table-add float-right mb-3 mr-2"><a href="#" class="text-success"><i
+              class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <thead>
+            <tr>
+              <th class="text-center">Counsellor's Name</th>
+              <th class="text-center">Clients Name</th>
+              <th class="text-center">Support Group</th>
+              <th class="text-center">Medication</th>
+            
+            </tr>
+          </thead>
+          
+          <tbody>
+            {% for medication in client_med %}
+            <tr>
+              <td class="pt-3-half" contenteditable="true"></td>
+              <td class="pt-3-half" contenteditable="true">{{user.client.name}}</td>
+              <td class="pt-3-half" contenteditable="true">{{client.support_group}}</td>
+              <td class="pt-3-half" contenteditable="true">{{client.medication}}</td>
+              <td class="pt-3-half" contenteditable="true"></td>
+              <td>
+                <span class="table-remove"><button type="button"
+                    class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+              </td>
+            </tr>
+            {% endfor %}
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  <!-- Editable table -->
