@@ -95,5 +95,5 @@ def edit(request, id):
 
 def display(request):
     sessions = Client.objects.filter(counsellor=request.user.id).all()
-    return render(request, 'client/sessions.html',{'sessions':sessions})
+    return render(request, 'counsellor/client-med.html',{'sessions':sessions})
   

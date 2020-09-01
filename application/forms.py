@@ -50,7 +50,9 @@ class ClientSignUpForm(UserCreationForm):
 
 
 class EditForm(forms.ModelForm):
-    time = forms.DateTimeField(widget=DateTimePicker())
+    time = forms.DateTimeField(widget=DateTimePicker(), required=False)
+    group = forms.ModelChoiceField(required=False,queryset=SupportGroup.objects ,empty_label=None)
+    link = forms.CharField(required=False)
     class Meta:
         model = Client
-        fields = ['time','link']
+        fields = ['medication', 'group', 'time', 'link']

@@ -16,8 +16,8 @@ class Client(models.Model):
     medication = models.CharField(max_length=255, blank=True)
     group = models.ForeignKey('SupportGroup', on_delete=models.CASCADE, null=True)
     counsellor = models.ForeignKey('Counsellor', on_delete=models.CASCADE)
-    time = models.DateTimeField(max_length=50, blank=True)
-    link = models.URLField(max_length=200, blank=True)
+    time = models.DateTimeField(max_length=50, blank=True, null=True)
+    link = models.URLField(max_length=200, blank=True, null=True)
 
     def save_client(self):
         self.save()
