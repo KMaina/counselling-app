@@ -12,10 +12,12 @@ urlpatterns=[
 
     #client urls
     url(r'^clients/home/$', views.client_home, name='client_home'),
+    url(r'^display/', views.display, name='display'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),
     url(r'^counsellors/support_group/$', views.support_group, name='c_group'),
+    url(r'^edit/$', views.edit, name='edit')
 ]
 
 if settings.DEBUG:
