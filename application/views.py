@@ -77,13 +77,10 @@ def edit(request):
     current_user = request.user
     if request.method == 'POST':
        form = EditForm(request.POST)
-       
        if form.is_valid():
-          
            edit = form.save(commit=False)
-           edit.user = current_user
+           edit.counsellor = current_user
            edit.save()
-           print('its works')
        return redirect('index')
     else:
        form = EditForm()
