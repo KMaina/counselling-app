@@ -49,6 +49,10 @@ def client_home(request):
 def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
 
+def client_med(request):
+    medication = Client.objects.all()
+    return render(request, 'counsellor/client-med.html', {'medication':medication})
+
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
@@ -91,5 +95,5 @@ def edit(request, id):
 
 def display(request):
     sessions = Client.objects.filter(counsellor=request.user.id).all()
-    return render(request, 'client/sessions.html',{'sessions':sessions})
+    return render(request, 'counsellor/client-med.html',{'sessions':sessions})
   

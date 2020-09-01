@@ -338,3 +338,7 @@ th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.pt-3-half {
+    padding-top: 1.4rem;
+}
