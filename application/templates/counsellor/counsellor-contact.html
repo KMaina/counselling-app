@@ -1,0 +1,32 @@
+<!-- contact-us section  -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="Contact-Us">
+    <h4>We value our clients' confidential issues and their health as well.<br>Have any concerns we'll reach back to you within a matter of hours to help you.</h4>
+       <form id="form" action="" method="POST">
+        <div class="row" id="contact-info-input">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="b_name"></label>
+                <input type="text" class="required form-control" name="b_name" id="b_name" placeholder="Name.">
+             </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="b_email"></label>
+                <input type="email"  class="required form-control" name="b_email" id="b_email" placeholder="Email">
+              </div>
+            </div>
+            <div class="col-10">
+              <div class="form-group">
+              <label for="message"></label>
+              <textarea type="text"  class="required form-control" id="b_comment" cols="30" rows="10" placeholder="Your message here..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="submit"><input type="submit" value="Submit" class=" btn btn-info"></div>
+       </form>
+</div>
+{% endblock %}

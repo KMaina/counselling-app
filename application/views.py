@@ -7,6 +7,7 @@ from .models import *
 from .forms import *
 
 
+
 def home(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
@@ -52,6 +53,10 @@ def client_med(request):
     medication = Client.objects.all()
     return render(request, 'counsellor/client-med.html', {'medication':medication})
 
+def contact(request):
+    
+    return render(request, 'counsellor/counsellor-contact.html')
+
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
@@ -75,4 +80,5 @@ def counsellor_home(request):
 @counsellor_required
 def support_group(request):
     return render(request, 'counsellor/support_group.html')
+
 

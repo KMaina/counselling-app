@@ -226,21 +226,7 @@ html,
 main {
   height: 100%;
 }
-/* #wave {
-  position: absolute;
-  height: 256.69px;
-  width: 1440.84px;
-  left: -1px;
-  top: -49px;
-  background: #e5e5e5;
-} */
 
-/* .wave{
-  background-image: url('/static/images/navbar.png');
-  padding-bottom: 10px;
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
 
 
 .nav-item {
@@ -321,4 +307,44 @@ main {
 /* MDI Specific CSS https://materialdesignicons.com/bootstrap*/
 .pt-3-half {
   padding-top: 1.4rem;
+  }
+
+  
+  #Contact-Us {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTiwQpZzpw6MtbDr_GWFdR96BjtwIjyuumzoQ&usqp=CAU');
+    background-size:cover;
+    display: cover;
+    background-position: center center;
+    padding: 10vh;
+    color: white;
+    
+    text-align: center;
+    
+  }
+  input[type=text],input[type=email],#b_comment{
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    font-family: 'Copse', serif;
+  }
+  
+  input[type=text] {
+    background-color:transparent;
+    color: white;
+  }
+  textarea[type=text] {
+    background-color:transparent;
+    color: white;
+  }
+  input[type=email] {
+    background-color:transparent;
+    color: white;
+  }
+  
+  
+  .submit{
+    position:absolute;
+    text-align: center;
+    padding-left: 40%;
+    
   }
