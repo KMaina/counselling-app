@@ -53,4 +53,4 @@ class EditForm(forms.ModelForm):
     time = forms.DateTimeField(widget=DateTimePicker())
     class Meta:
         model = Client
-        fields = ['user','group','counsellor','time','link']
+        fields = ['time','link']
