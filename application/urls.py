@@ -17,7 +17,7 @@ urlpatterns=[
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),
     url(r'^counsellors/support_group/$', views.support_group, name='c_group'),
-    url(r'^edit/$', views.edit, name='edit')
+    url(r'^edit/(\d+)/$', views.edit, name='edit')
 ]
 
 if settings.DEBUG:

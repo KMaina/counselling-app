@@ -1,25 +1,24 @@
-{% extends "base.html" %}
-{% load bootstrap4 %}
-{% load static %}
-
-{% block content %}
-    <h2 class="text-center">Session Table</h2>
-    {% for session in sessions %}
+{% extends "base.html" %} {% load bootstrap4 %} {% load static %} {% block content %}
+<h2 class="text-center">Session Table</h2>
+<div class="container">
     <table>
-            <tr>
-                <th>Client name </th>
-                <th>Counsellor name</th>
-                <th>Session link</th>
-                <th>Session time</th>
-                <th><a href="{% url 'edit' %}"><i class="fa fa-pencil" aria-hidden="true"></i></a></th>
-            </tr>
-            <tr>
-                <td>{{session.User}}</td>
-                <td>{{session.Counsellor.user.username}}</td>
-                <td>{{session.link}}</td>
-                <td>{{session.time}}</td>
-            </tr>
-        
-        </table>
-    {% endfor %}
+        <tr>
+            <th>Client name </th>
+            <th>Session link</th>
+            <th>Session time</th>
+            <th><a href="#"> Add client </a></th>
+        </tr>
+        {% for session in sessions %}
+        <tr>
+            <td>{{session.user.username}}</td>
+            <td>{{session.link}}</td>
+            <td>{{session.time}}</td>
+            <td> <a href="/edit/{{session.user.id}}">Edit session </a> </td>
+            <td> <a href="/edit/{{session.user.id}}">Prescribe meds</a> </td>
+            <td> <a href="/edit/{{session.user.id}}">Add support group </a> </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
 {% endblock content %}
