@@ -125,107 +125,93 @@ section .section-title {
     height: 120px;
     border-radius: 50%;
 }
-body, html {
-  height: 100%;
+
+body,
+html {
+    height: 100%;
 }
+
 .bg {
-  /* The image used */
-  background-image: url("https://cdn.pixabay.com/photo/2017/09/30/17/58/hands-2802891__340.jpg");
-  /* Full height */
-  height: 100%;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-a.button3{
-    display:inline-block;
-    padding:0.3em 1.2em;
-    margin:0 0.3em 0.3em 0;
-    border-radius:2em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    background-color:#4eb5f1;
-    text-align:center;
-    transition: all 0.2s;
-}
-
-a.button3:hover{
-    background-color:#4095c6;
-}
-
-@media all and (max-width:30em){
-    a.button3{
-        display: block;
-        /* margin: 0.2em auto; */
-    }
-}
-.can{
-  
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.container4{
-  color: white;
-  margin: 0;
-  font-size: 40px;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-    
-}
-.header{
-    background-image: url('https://images.pexels.com/photos/2467396/pexels-photo-2467396.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
-    );
+    /* The image used */
+    background-image: url("https://cdn.pixabay.com/photo/2017/09/30/17/58/hands-2802891__340.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: center; 
+}
+
+.btn {
+    color: #06aba4;
+}
+
+.can {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.container4 {
+    color: white;
+    margin: 0;
+    font-size: 40px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.header {
+    background-image: url('https://images.pexels.com/photos/2467396/pexels-photo-2467396.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
     height: 500px;
 }
-.pace{
+
+.pace {
     text-align: center;
     color: beige;
     padding-top: 10%;
     font-size: 40px;
 }
+
 .container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: relative;
+    text-align: center;
+    color: #000;
 }
 
-.match{
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.match {
     color: black;
     padding: 10px;
     font-size: 30px;
 }
 
 .text-center {
-  text-align: center;
+    text-align: center;
 }
+
 body,
 html,
 main {
-  height: 100%;
+    height: 100%;
 }
+
+
 /* #wave {
   position: absolute;
   height: 256.69px;
@@ -235,6 +221,7 @@ main {
   background: #e5e5e5;
 } */
 
+
 /* .wave{
   background-image: url('/static/images/navbar.png');
   padding-bottom: 10px;
@@ -242,80 +229,112 @@ main {
   background-repeat: no-repeat;
 } */
 
-
 .nav-item {
-  margin-left: 4%;
-  margin-right: 4%;
-  color: black;
+    margin-left: 4%;
+    margin-right: 4%;
+    color: black;
 }
-
-
 
 .nav-item:hover {
-  background-color: black;
+    background-color: black;
 }
 
+
 /* MDI Specific CSS https://materialdesignicons.com/bootstrap*/
+
 .mdi::before {
-  font-size: 24px;
-  line-height: 14px;
+    font-size: 24px;
+    line-height: 14px;
 }
+
 .btn .mdi::before {
-  position: relative;
-  top: 4px;
+    position: relative;
+    top: 4px;
 }
+
 .btn-xs .mdi::before {
-  font-size: 18px;
-  top: 3px;
+    font-size: 18px;
+    top: 3px;
 }
+
 .btn-sm .mdi::before {
-  font-size: 18px;
-  top: 3px;
+    font-size: 18px;
+    top: 3px;
 }
+
 .dropdown-menu .mdi {
-  width: 18px;
+    width: 18px;
 }
+
 .dropdown-menu .mdi::before {
-  position: relative;
-  top: 4px;
-  left: -8px;
+    position: relative;
+    top: 4px;
+    left: -8px;
 }
+
 .nav .mdi::before {
-  position: relative;
-  top: 4px;
+    position: relative;
+    top: 4px;
 }
+
 .navbar .navbar-toggle .mdi::before {
-  position: relative;
-  top: 4px;
-  color: rgb(61, 60, 60);
+    position: relative;
+    top: 4px;
+    color: rgb(61, 60, 60);
 }
+
 .breadcrumb .mdi::before {
-  position: relative;
-  top: 4px;
+    position: relative;
+    top: 4px;
 }
+
 .breadcrumb a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
+
 .breadcrumb a:hover span {
-  text-decoration: underline;
+    text-decoration: underline;
 }
+
 .alert .mdi::before {
-  position: relative;
-  top: 4px;
-  margin-right: 2px;
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
 }
+
 .input-group-addon .mdi::before {
-  position: relative;
-  top: 3px;
+    position: relative;
+    top: 3px;
 }
+
 .navbar-brand .mdi::before {
-  position: relative;
-  top: 2px;
-  margin-right: 2px;
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
 }
+
 .list-group-item .mdi::before {
-  position: relative;
-  top: 3px;
-  left: -3px
+    position: relative;
+    top: 3px;
+    left: -3px
 }
+
+
 /* MDI Specific CSS https://materialdesignicons.com/bootstrap*/
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

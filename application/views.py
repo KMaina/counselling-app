@@ -13,7 +13,8 @@ def home(request):
             return redirect('counsellor_home')
     
     return render(request, 'index.html')
-  
+
+
 def join(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
@@ -71,3 +72,24 @@ def counsellor_home(request):
 @counsellor_required
 def support_group(request):
     return render(request, 'counsellor/support_group.html')
+
+def edit(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=id)
+    dr = Counsellor.objects.get(user=current_user.id)
+    if request.method == 'POST':
+       form = EditForm(request.POST)
+       if form.is_valid():
+           edit = form.save(commit=False)
+           edit.user = client.user
+           edit.counsellor = dr
+           edit.save()
+       return redirect('display')
+    else:
+       form = EditForm()
+    return render(request, 'counsellor/counsellor_edit.html',{"form":form})
+
+def display(request):
+    sessions = Client.objects.filter(counsellor=request.user.id).all()
+    return render(request, 'client/sessions.html',{'sessions':sessions})
+  
