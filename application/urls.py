@@ -20,10 +20,7 @@ urlpatterns=[
     url(r'^counsellors/support_group/$', views.support_group, name='c_group'),
     url(r'^edit/(\d+)/$', views.edit, name='edit'),
     url(r'^counsellors/client_data/$', views.display, name='display'),
-    url(r'^addclient/$', views.addclient, name='addclient'),
-    url(r'^displayclient', views.clientdisplay, name='displayclient'),
     url(r'^counsellors/group_list/$', views.group_list, name='group_list'),
-
 ]
 
 if settings.DEBUG:
