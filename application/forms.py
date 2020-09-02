@@ -62,3 +62,10 @@ class CreateGroup(forms.ModelForm):
     class Meta:
         model = SupportGroup
         fields = ['name', 'description']
+
+        
+class AddClientForm(forms.ModelForm):
+    user = forms.ModelChoiceField(queryset=User.objects.filter(is_client=True), empty_label=None)
+    class Meta:
+        model = Client
+        fields = ['user', 'issue']

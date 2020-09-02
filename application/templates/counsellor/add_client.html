@@ -1,0 +1,19 @@
+{% extends 'counsellor/base.html' %} 
+{% load static %}
+{% block content %}
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+            <thead>
+                <tr>
+                    <th class="text-center">Clients Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                <tr>
+                    <td class="text-center pt-3-half">{{item.user.username}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+{% endblock %}
