@@ -57,13 +57,7 @@ class EditForm(forms.ModelForm):
         model = Client
         fields = ['medication', 'group', 'time', 'link']
 
-        
-class AddClientForm(forms.ModelForm):
-    class Meta:
-        model = Client
-        fields = ['user']
 
-        
 class CreateGroup(forms.ModelForm):
     class Meta:
         model = SupportGroup
