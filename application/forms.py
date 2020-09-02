@@ -62,3 +62,9 @@ class CreateGroup(forms.ModelForm):
     class Meta:
         model = SupportGroup
         fields = ['name', 'description']
+
+        
+class AddClientForm(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = ['user']
