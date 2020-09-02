@@ -1,1 +1,1 @@
-web: gunicorn project.wsgi --log-file -
+python-3.6.9
