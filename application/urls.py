@@ -22,6 +22,10 @@ urlpatterns=[
     url(r'^counsellors/client_data/$', views.display, name='display'),
     url(r'^counsellors/group_list/$', views.group_list, name='group_list'),
     url(r'^addclient/$', views.addclient, name='addclient'),
+    
+
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
 ]
 
 if settings.DEBUG:

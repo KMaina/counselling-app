@@ -8,7 +8,7 @@ from tempus_dominus.widgets import  DateTimePicker
 
 
 class CounsellorSignUpForm(UserCreationForm):
-
+    email = forms.EmailField(max_length=200, help_text='Required')
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ("username", "email", "password1", "password2")
@@ -29,7 +29,7 @@ class CounsellorSignUpForm(UserCreationForm):
 
 
 class ClientSignUpForm(UserCreationForm):
-
+    email = forms.EmailField(max_length=200, help_text='Required')
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ("username", "email", "password1", "password2")
