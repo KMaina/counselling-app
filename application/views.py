@@ -56,6 +56,8 @@ def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
 
 
+def client(request):
+    return render (request, 'client/client.html')
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
@@ -93,6 +95,10 @@ def group_list(request):
     return render(request, 'counsellor/group_list.html', {'groups':groups})
 
 
+@counsellor_required
+def client_group(request):
+    client = Client.objects.all()
+    return render(request, 'counsellor/client_group.html', {"client": client})
 def edit(request, id):
     current_user = request.user
     client = Client.objects.get(user=id)

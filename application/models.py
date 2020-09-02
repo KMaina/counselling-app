@@ -4,7 +4,6 @@ from django.utils.html import mark_safe, escape
 from datetime import timedelta
 
 
-
 class User(AbstractUser):
     is_client = models.BooleanField(default=False)
     is_counsellor = models.BooleanField(default=False)
