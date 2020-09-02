@@ -12,7 +12,7 @@ def home(request):
         if request.user.is_counsellor:
             return redirect('counsellor_home')
         else:
-            return redirect('client_home')
+            return redirect('client')
     
     return render(request, 'index.html')
 
@@ -26,7 +26,7 @@ def join(request):
         if request.user.is_counsellor:
             return redirect('counsellor_home')
         else:
-            return redirect('client_home')
+            return redirect('client')
     return render(request, 'choice.html')
 
 
@@ -47,17 +47,16 @@ class ClientSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('client_home')
-
-def client_home(request):
-    return render(request, 'client/index.html')
+        return redirect('client')
 
 def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
 
-
+@client_required
 def client(request):
-    return render (request, 'client/client.html')
+    current_user = request.user
+    client = Client.objects.filter(user=current_user.id)
+    return render (request, 'client/client.html', {'client':client})
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
@@ -99,6 +98,7 @@ def group_list(request):
 def client_group(request):
     client = Client.objects.all()
     return render(request, 'counsellor/client_group.html', {"client": client})
+
 def edit(request, id):
     current_user = request.user
     client = Client.objects.get(user=id)

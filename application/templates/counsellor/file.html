@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<br> ​
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Support Group</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Client</th>
+                </tr>
+                {% for group in client %}
+                <tr>
+                    <td> {{group.client}} </td>
+                    <td> {{group.name}} </td>
+                    <td> {{group.counsellor}} </td>
+                </tr>
+                {% endfor %} ​
+            </table>
+        </div>
+    </div>
+</div>
