@@ -18,8 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarNav"></div>
         <ul class="right hide-on-med-and-down">
             <li><a href="/" class="black-text">Home</a></li>
-            <li><a href="#" class="black-text">Articles</a></li>
-            <li><a href="#" class="black-text">Programmes</a></li>
+            <li><a href="{% url 'articles' %}" class="black-text">Articles</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}" class="btn waves-effect waves-light black-text">Logout</a></li>
             {% else %}

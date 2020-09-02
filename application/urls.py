@@ -8,6 +8,7 @@ from django.conf.urls.static import static
 urlpatterns=[
     url(r'^$', views.home, name='index'),
     url(r'^join/$', views.join, name='join'),
+    url(r'^articles/$', views.articles, name='articles'),
     url(r'^counsellors/list/$', views.counsel, name='counsellor_list'),
 
     #client urls
@@ -21,6 +22,8 @@ urlpatterns=[
     url(r'^counsellors/client_data/$', views.display, name='display'),
     url(r'^addclient/$', views.addclient, name='addclient'),
     url(r'^displayclient', views.clientdisplay, name='displayclient'),
+    url(r'^counsellors/group_list/$', views.group_list, name='group_list'),
+
 ]
 
 if settings.DEBUG:

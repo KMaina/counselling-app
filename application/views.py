@@ -11,8 +11,14 @@ def home(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
             return redirect('counsellor_home')
+        else:
+            return redirect('client_home')
     
     return render(request, 'index.html')
+
+
+def articles(request):
+    return render(request, 'article.html')
 
 
 def join(request):
@@ -49,9 +55,6 @@ def client_home(request):
 def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
 
-def client_med(request):
-    medication = Client.objects.all()
-    return render(request, 'counsellor/client-med.html', {'medication':medication})
 
 
 #counsellor views
@@ -75,7 +78,20 @@ def counsellor_home(request):
 
 @counsellor_required
 def support_group(request):
-    return render(request, 'counsellor/support_group.html')
+    if request.method == 'POST':
+        form = CreateGroup(request.POST)
+        if form.is_valid():
+            create=form.save(commit=False)
+            create.save()
+        return redirect('group_list')
+    else:
+        form=CreateGroup()
+    return render(request, 'counsellor/support_group.html', {'form':form})
+
+def group_list(request):
+    groups = SupportGroup.objects.all()
+    return render(request, 'counsellor/group_list.html', {'groups':groups})
+
 
 def edit(request, id):
     current_user = request.user
