@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %} {% load static %} {% load crispy_forms_tags %}
+<div class="container-fluid" id="con">
+    <div class="row">
+        {% for item in groups %}
+        <div class="col-md-3 col-sm-4">
+            <img src="{{item.image.url}}" class="img-responsive img-fluid img-thumbnail" style="width: 100%;height:auto" data-toggle="modal" data-target="" data-backdrop="false">
+            <h5>{{item.name}}</h5>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+
+
+</div>
+{% endblock %}
