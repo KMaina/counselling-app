@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.urls import path
+from application import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'', include('application.urls')),
     url(r'^accounts/', include('django_registration.backends.one_step.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/signup/$', views.SignUpView.as_view(), name='signup'),
+    path('accounts/register/client/', views.ClientSignUpView.as_view(), name='client_signup'),
+    path('accounts/register/counsellor/', views.CounsellorSignUpView.as_view(), name='counsellor_signup'),
 ]

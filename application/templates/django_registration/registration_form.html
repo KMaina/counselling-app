@@ -1,0 +1,45 @@
+{% load crispy_forms_tags %} {% load static %} {% load bootstrap4 %} {% block styles %} {{super}} {% bootstrap_css%} {% endblock %} {% block content %}
+<div class="container my-5">
+
+    <section>
+
+        <div class="card mb-4">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <img src="{% static 'images/healing.jpg' %}" width=100% mt-5 alt="My image">
+
+                </div>
+
+                <div class="col-md-6 p-5 align-self-center">
+                    <div class="text-center">
+                        <h4 class="font-weight-bold text-center">REGISTER HERE </h4>
+                        <img src="{% static 'images/logo.jpeg' %}" alt="My image">
+                    </div>
+
+                    <form method="POST" class="form-group">
+                        {% csrf_token%}
+
+                        <input type="hidden" name="next" value="{{ next }}"> {{ form|crispy }} {{form.errors}}
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-info btn-rounded">Register</button>
+                        </div>
+                        <p class="text-center">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

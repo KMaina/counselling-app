@@ -1,0 +1,16 @@
+{% extends 'counsellor/base.html' %} {% load bootstrap4 %} {% load static %} {% block content %} {{super}}
+<div class="bg">
+    <div class="wrapper_pace">
+        <div class="container4">
+            <p class="pace">Welcome to work, Dr. {{user.username}}!!</p>
+        </div>
+    </div>
+    <div class="can">
+        <a href="{% url 'display' %}" class="btn">My clients</a>
+        <a href="{% url 'c_group' %}" class="btn">Create Support Group</a>
+        <a href="{% url 'group_list' %}" class="btn">View Groups</a>
+    </div>
+</div>
+
+
+{% endblock %}

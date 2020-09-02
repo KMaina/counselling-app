@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+<!--  -->
+
+{% block styles %}
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {% endblock %}
+
+<body>
+    <div class="container black-text">
+        <h1>Welcome to Well Heard! <span class="icon-emo-happy"></span></h1>
+        <p>
+            If you already have an account
+            <br>
+            <a class="btn waves-effect waves-light" href="{% url 'login' %}">log in</a>
+        </p>
+        <p>
+            If you are new to Well Heard, get started with
+            <br>
+            <a class="btn waves-effect waves-light" href="{% url 'client_signup' %}">client account</a> OR <a class="btn waves-effect waves-light" href="{% url 'counsellor_signup' %}">counsellor account</a>
+        </p>
+    </div>
+</body>
+{% endblock %}

@@ -1,1 +1,179 @@
-<p>Templating works!</p>
+{% extends 'base.html' %} {% block content %}
+
+<body>
+    <section class="hero" id="home">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="text-center">Dedicated Safe Space</h3>
+                    <h6 class="text-light text-center">Focused on suicide prevention by offering emotional support.</h6>
+                </div>
+                <div class="col-sm-12 text-center">
+                    <button class="btn btn-primary"> <a href=" {% url 'counsellor_list' %} " class="text-dark">Our Counselors</a> </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </section>
+    <!-- /.hero -->
+
+
+    <!-- We can help with -->
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-sub-header">
+                        <div class="sub-header__text">We can help with</div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="offset-4 col-sm-4 offset-4">
+                    <ul class="help-list">
+                        <li>Depression</li>
+                        <li>Anxiety</li>
+                        <li>Grief and Loss</li>
+                        <li>Trauma including PTSD</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </section>
+    <!-- /.we can help with -->
+
+    </section>
+    <!-- /.about us -->
+
+    <!-- Our Service -->
+    <section id="our-service" class="banner">
+
+        <!-- Making an appointment -->
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="section-sub-header">
+                            <div class="sub-header__text">Making an Appointment</div>
+                        </div>
+                        <p>
+                            You don’t need a referral from your Psychiatrist to make an appointment to see one of our counselors at Well Heard.
+                        </p>
+                        <p>
+                            We welcome any questions or requests for further information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /.making an appointment -->
+
+        <!-- Initial Consultation -->
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="section-sub-header">
+                            <div class="sub-header__text">Initial Consultation</div>
+                        </div>
+                        <p>
+                            The therapy process begins with an initial consultation. The goal of this appointment is for you and your counselor to work together in getting a thorough understanding of your difficulties, personal and family history and strengths. It is the start of
+                            the process of building a trusting and collaborative relationship with your counselor.
+                        </p>
+                        <p>
+                            Following this appointment, together you will develop an individualized formulation and treatment plan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /.initial consulatation -->
+
+        <!-- The Therapy Process -->
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="section-sub-header">
+                            <div class="sub-header__text">Therapy Process</div>
+                        </div>
+                        <p>
+                            Sessions are 50 minutes in duration and the frequency of appointments is individually tailored to meet your needs and goals. Appointments can be scheduled weekly, fortnightly and monthly.
+                        </p>
+                        <p>
+                            Due to the pandemic, all meetings will be scheduled on Google Meet. Our counselors are bound by a professional code of ethics and are required to abide by principles of professional conduct, responsibilities and confidentiality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /.therapy process -->
+
+        <!-- Fees & Rebates -->
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="section-sub-header">
+                            <div class="sub-header__text">Fees and Rebates</div>
+                        </div>
+                        <p>
+                            You may be eligible for Medicare or private health fund rebates depending on your referral and health fund provisions. Please feel free to contact us to discuss appointment fees and rebates.
+                        </p>
+                        <p>
+                            There is a cancellation fee of 50% for appointments cancelled within 24 hours of the appointment time or for non-attended appointments. Unfortunately, no rebates are available for cancellation fees. Cancellations made before the 24 hour time frame will
+                            not incur a fee.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /.fees & rebates -->
+    </section>
+    <!-- /.our service -->
+    <!-- Contact Us -->
+    <section id="contact-us" class="banner full-width">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-center pv-50">
+                    <div class="section-header text-center">Contact Us</div>
+                    <address>
+                        <strong>Well Heard</strong><br>
+                        Nairobi, Kenya<br>
+                    </address>
+                    <div class="contact-info"><i class="material-icons">&#xE0CD;</i>
+                        <div class="contact-info__text">(+2547) 1234 5678</div>
+                    </div><br />
+                    <div class="contact-info"><i class="material-icons">&#xE8A8;</i>
+                        <div class="contact-info__text">(0200) 4567 8912</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <footer class="text-center">
+        <div class="container">
+            <div class="footer-header">Disclaimer</div>
+            <p>Please note the Well Heard Practice does not provide a crisis service. If you are in crisis, please call the Mental Health Line on 1800 011 511, and go to the emergency department of your local hospital or call 000.</p>
+            <p>
+                The content on this website is only a summary of the subject matter covered and is not intended to be, nor should be relied on, as a substitute for professional advice.
+            </p>
+            <p>
+                © 2020 Well Heard Practice
+            </p>
+
+        </div>
+        <!-- /.container -->
+    </footer>
+
+</body>
+{% endblock %}

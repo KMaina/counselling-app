@@ -1,0 +1,45 @@
+{% extends 'counsellor/base.html' %} {% load static %}
+
+<!-- Editable table -->
+{% block content %}
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Clients List</h3>
+    <div class="card-body">
+        <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2"><a href="{% url 'addclient' %}" class="text-success"><i
+              class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                    <tr>
+                        <!-- <th class="text-center">Counsellor's Name</th> -->
+                        <th class="text-center">Clients Name</th>
+                        <th class="text-center">Support Group</th>
+                        <th class="text-center">Medication</th>
+                        <th class="text-center">Session link</th>
+                        <th class="text-center">Session time</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in sessions %}
+                    <tr>
+                        <td class="text-center pt-3-half">{{item.user.username}}</td>
+                        <td class="text-center pt-3-half">{{item.group}}</td>
+                        <td class="text-center pt-3-half">{{item.medication}}</td>
+                        <td class="text-center pt-3-half"><a href="{{item.link}}">{{item.link}}</a></td>
+                        <td class="text-center pt-3-half">{{item.time}}</td>
+                        <td>
+                            <span class="table-add float-right mb-3 mr-2"><a href="/edit/{{item.user.id}}" class="text-success"><i
+                            class="fas fa-edit fa-2x" aria-hidden="true"></i></a></span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- Editable table -->

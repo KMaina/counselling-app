@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<!--  -->
+
+{% block styles %}
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {% endblock %}
+
+<body>
+    <div class="container black-text">
+        <h2>Sign up for a free account</h2>
+        <p class="lead">Select below the type of account you want to create</p>
+        <a href="{% url 'client_signup' %}" class="btn btn-student btn-lg" role="button">I'm a client</a>
+        <a href="{% url 'counsellor_signup' %}" class="btn btn-teacher btn-lg" role="button">I'm a counsellor</a>
+    </div>
+</body>
+{% endblock %}

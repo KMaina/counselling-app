@@ -1,0 +1,36 @@
+{% load static %}
+
+<!--  -->
+{% block styles %}
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {% endblock %}
+<!--  -->
+
+<div class="navbar-fixed">
+    <nav class="navbar navbar-expand-lg navbar-dark white">
+        <a href="/" class="brand-logo">
+            <img src="{% static 'images/logo.jpeg' %}" alt="logo" width=10%>
+            <span class="black-text">well heard</span>
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i class="material-icons">menu</i></a>
+        <div class="collapse navbar-collapse" id="navbarNav"></div>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="{% url 'articles' %}" class="black-text">Articles</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}" class="btn waves-effect waves-light black-text">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'join' %}" class="btn waves-effect waves-light black-text">Get Started</a></li>
+            {% endif %}
+        </ul>
+        <ul class="sidenav center-align" id="mobile-demo">
+            <img src="{% static 'images/logo.jpeg' %}" alt="logo">
+            <hr>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="{% url 'join' %}" class="btn waves-effect waves-light black-text">Join</a></li>
+        </ul>
+    </nav>
+</div>
