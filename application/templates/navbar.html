@@ -22,15 +22,15 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}" class="btn waves-effect waves-light black-text">Logout</a></li>
             {% else %}
-            <li><a href="{% url 'join' %}" class="btn waves-effect waves-light black-text">Get Started</a></li>
+            <li><a href="{% url 'login' %}" class="btn waves-effect waves-light black-text">Login</a></li>
             {% endif %}
-        </ul>
-        <ul class="sidenav center-align" id="mobile-demo">
-            <img src="{% static 'images/logo.jpeg' %}" alt="logo">
-            <hr>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Articles</a></li>
-            <li><a href="{% url 'join' %}" class="btn waves-effect waves-light black-text">Join</a></li>
         </ul>
     </nav>
 </div>
+<ul class="sidenav center-align" id="mobile-demo">
+    <img src="{% static 'images/logo.jpeg' %}" alt="logo">
+    <hr>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Articles</a></li>
+    <li><a href="{% url 'join' %}" class="btn waves-effect waves-light black-text">Join</a></li>
+</ul>

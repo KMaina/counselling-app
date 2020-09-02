@@ -12,8 +12,7 @@ urlpatterns=[
     url(r'^counsellors/list/$', views.counsel, name='counsellor_list'),
 
     #client urls
-    url(r'^clients/home/$', views.client_home, name='client_home'),
-    
+    url(r'^client/$', views.client, name='client'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),

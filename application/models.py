@@ -4,7 +4,6 @@ from django.utils.html import mark_safe, escape
 from datetime import timedelta
 
 
-
 class User(AbstractUser):
     is_client = models.BooleanField(default=False)
     is_counsellor = models.BooleanField(default=False)
@@ -29,7 +28,7 @@ class Client(models.Model):
 
 class Counsellor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    profile_photo = models.ImageField(default='default_avatar.jpg', upload_to='profile_pics')
+    profile_photo = models.ImageField(default='default.png', upload_to='profile_pics')
 
     def __str__(self):
         return f"Dr. {self.user.username}"

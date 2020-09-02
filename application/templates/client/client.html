@@ -1,0 +1,65 @@
+{% extends 'counsellor/base.html' %} {% block content %}
+<div class="container-fluid">
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Patient Information</h3>
+        <div class="card-body">
+            <div id="table" class="table-editable">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Prescribed medication</th>
+                            <th class="text-center">Session link</th>
+                            <th class="text-center">Session time</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in client %}
+                        <tr>
+                            <td class="text-center pt-3-half">{{item.medication}}</td>
+                            <td class="text-center pt-3-half"><a href="{{item.link}}">{{item.link}}</a></td>
+                            <td class="text-center pt-3-half">{{item.time}}</td>
+                            <td>
+                                <span class="table-add float-right mb-3 mr-2"><a href="" class="text-success"><i
+                                class="fas fa-edit fa-2x" aria-hidden="true"></i></a></span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-1 col-md-5">
+            <div class="card text-center" style="width:400px;">
+                <h6 class=" text-center font-weight-bold text-uppercase">My doctor</h6>
+                <hr> {% for item in client %}
+                <!-- <img class="card-img-top" src="{{item.counsellor.profile_photo.url}}" alt=""> -->
+                <div class="card-body">
+                    <h4 class="card-title">Dr. {{item.counsellor.user.username}}</h4>
+                    <a href="#" class="btn btn-primary">Change counsellor</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5 offset-1">
+            <div class="card text-center" style="width:400px;">
+                <h6 class=" text-center font-weight-bold text-uppercase">My support group</h6>
+                <hr> {% for item in client %}
+                <!-- <img class="card-img-top" src="{{item.group.image.url}}" alt=""> -->
+                <div class="card-body">
+                    <h4 class="card-title">{{item.group.name}}</h4>
+                    <a href="#" class="btn btn-primary">View group</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
