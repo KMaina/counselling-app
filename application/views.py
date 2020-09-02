@@ -7,6 +7,7 @@ from .models import *
 from .forms import *
 
 
+
 def home(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
@@ -57,6 +58,17 @@ def client(request):
     current_user = request.user
     client = Client.objects.filter(user=current_user.id)
     return render (request, 'client/client.html', {'client':client})
+
+# def client_med(request):
+#     medication = Client.objects.all()
+#     return render(request, 'counsellor/client-med.html', {'medication':medication})
+
+def contact(request):
+    
+    return render(request, 'counsellor/counsellor-contact.html')
+
+def chat(request):
+    return render(request, 'client/chat.html')
 
 #counsellor views
 class CounsellorSignUpView(CreateView):
