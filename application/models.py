@@ -13,6 +13,7 @@ class User(AbstractUser):
 
 class Client(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    issue = models.TextField(blank=True, null=True)
     medication = models.CharField(max_length=255, blank=True)
     group = models.ForeignKey('SupportGroup', on_delete=models.CASCADE, null=True)
     counsellor = models.ForeignKey('Counsellor', on_delete=models.CASCADE)

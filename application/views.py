@@ -115,20 +115,15 @@ def display(request):
 
 def addclient(request):
     current_user = request.user
-    # dr = Counsellor.objects.get(user=current_user)
+    dr = Counsellor.objects.get(user=current_user.id)
     if request.method == 'POST':
-       form = AddClientForm(request.POST)
-       if form.is_valid():
-           add = form.save(commit=False)
-           add.counsellor = dr
-           add.save()
-       return redirect('displayclient')
+        form = AddClientForm(request.POST)
+        if form.is_valid():
+            add = form.save(commit=False)
+            add.counsellor = None
+            add.counsellor = dr
+            add.save()
+        return redirect('display')
     else:
-       form = AddClientForm()
+        form = AddClientForm()
     return render(request, 'counsellor/add_client_form.html',{"form":form})
-
-
-  
-def clientdisplay(request):
-    clients = Client.objects.filter(counsellor=request.user.id).all()
-    return render(request, 'counsellor/add_client.html',{'clients':clients})
