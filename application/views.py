@@ -112,4 +112,23 @@ def edit(request, id):
 def display(request):
     sessions = Client.objects.filter(counsellor=request.user.id).all()
     return render(request, 'counsellor/client-med.html',{'sessions':sessions})
+
+def addclient(request):
+    current_user = request.user
+    # dr = Counsellor.objects.get(user=current_user)
+    if request.method == 'POST':
+       form = AddClientForm(request.POST)
+       if form.is_valid():
+           add = form.save(commit=False)
+           add.counsellor = dr
+           add.save()
+       return redirect('displayclient')
+    else:
+       form = AddClientForm()
+    return render(request, 'counsellor/add_client_form.html',{"form":form})
+
+
   
+def clientdisplay(request):
+    clients = Client.objects.filter(counsellor=request.user.id).all()
+    return render(request, 'counsellor/add_client.html',{'clients':clients})
