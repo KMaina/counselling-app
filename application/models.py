@@ -33,6 +33,7 @@ class Counsellor(models.Model):
     def __str__(self):
         return f"Dr. {self.user.username}"
 
+
 class SupportGroup(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='group_profiles', default='image.jpg')
@@ -42,3 +43,11 @@ class SupportGroup(models.Model):
         return f"{self.name}"
 
   
+class Discussion(models.Model):
+    message = models.TextField()
+    sender = models.ForeignKey(Client, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
+    group = models.ForeignKey(SupportGroup, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Message by {self.sender}'
