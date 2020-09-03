@@ -214,6 +214,7 @@ def edit_group(request, id):
         if form.is_valid():
             edit = form.save(commit=False)
             edit.id = id
+            edit.name = grp.name
             edit.save()
         return redirect('group_list')
     else:
