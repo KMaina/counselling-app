@@ -127,3 +127,7 @@ def addclient(request):
     else:
         form = AddClientForm()
     return render(request, 'counsellor/add_client_form.html',{"form":form})
+
+def profile(request):
+    
+    return render(request, 'client/profile.html')

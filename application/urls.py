@@ -13,7 +13,7 @@ urlpatterns=[
 
     #client urls
     url(r'^clients/home/$', views.client_home, name='client_home'),
-    
+    url(r'^clients/profile/$', views.profile, name='profile'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),
