@@ -90,3 +90,11 @@ class Forum(forms.ModelForm):
     class Meta:
         model = Discussion
         fields = ['message']
+
+
+class EditGroup(forms.ModelForm):
+    name = forms.CharField(required=False)
+    description = forms.TimeField(required=False)
+    class Meta:
+        model = SupportGroup
+        fields = ['name', 'description']

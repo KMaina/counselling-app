@@ -124,6 +124,8 @@ class CounsellorSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        person = User.objects.get(id=user.id)
+        Counsellor.objects.create(user=person)
         login(self.request, user)
         return redirect('counsellor_home')
 
@@ -143,6 +145,8 @@ def support_group(request):
         form=CreateGroup()
     return render(request, 'counsellor/support_group.html', {'form':form})
 
+
+@counsellor_required
 def group_list(request):
     groups = SupportGroup.objects.all()
     return render(request, 'counsellor/group_list.html', {'groups':groups})
@@ -153,6 +157,8 @@ def client_group(request):
     client = Client.objects.all()
     return render(request, 'counsellor/client_group.html', {"client": client})
 
+
+@counsellor_required
 def edit(request, id):
     current_user = request.user
     client = Client.objects.get(user=id)
@@ -169,10 +175,14 @@ def edit(request, id):
        form = EditForm()
     return render(request, 'counsellor/counsellor_edit.html',{"form":form})
 
+
+@counsellor_required
 def display(request):
     sessions = Client.objects.filter(counsellor=request.user.id).all()
     return render(request, 'counsellor/client-med.html',{'sessions':sessions})
 
+
+@counsellor_required
 def addclient(request):
     current_user = request.user
     dr = Counsellor.objects.get(user=current_user.id)
@@ -187,3 +197,25 @@ def addclient(request):
     else:
         form = AddClientForm()
     return render(request, 'counsellor/add_client_form.html',{"form":form})
+
+
+@counsellor_required
+def delete_group(request, id):
+    grp = SupportGroup.objects.filter(id=id)
+    grp.delete()
+    return redirect('group_list')
+
+
+@counsellor_required
+def edit_group(request, id):
+    grp = SupportGroup.objects.get(id=id)
+    if request.method == 'POST':
+        form = EditGroup(request.POST)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.id = id
+            edit.save()
+        return redirect('group_list')
+    else:
+        form = EditGroup()
+    return render(request, 'counsellor/edit_group.html', {'form':form})
