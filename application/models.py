@@ -9,15 +9,16 @@ class User(AbstractUser):
     is_counsellor = models.BooleanField(default=False)
 
 
-
 class Client(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True, primary_key=True)
+    name = models.CharField(max_length=255, null=True)
     issue = models.TextField(blank=True, null=True)
     medication = models.CharField(max_length=255, blank=True)
     group = models.ForeignKey('SupportGroup', on_delete=models.CASCADE, null=True)
     counsellor = models.ForeignKey('Counsellor', on_delete=models.CASCADE)
     time = models.DateTimeField(max_length=50, blank=True, null=True)
     link = models.URLField(max_length=200, blank=True, null=True)
+    profile_photo = models.ImageField(default='default.png', upload_to='profile_pics')
 
     def save_client(self):
         self.save()
@@ -33,6 +34,7 @@ class Counsellor(models.Model):
     def __str__(self):
         return f"Dr. {self.user.username}"
 
+
 class SupportGroup(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='group_profiles', default='image.jpg')
@@ -42,3 +44,11 @@ class SupportGroup(models.Model):
         return f"{self.name}"
 
   
+class Discussion(models.Model):
+    message = models.TextField()
+    sender = models.ForeignKey(Client, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
+    group = models.ForeignKey(SupportGroup, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Message by {self.sender}'

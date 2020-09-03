@@ -1,5 +1,6 @@
 {% extends 'counsellor/base.html' %} {% block content %}
 <div class="container-fluid">
+    {% if client %}
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Patient Information</h3>
         <div class="card-body">
@@ -20,7 +21,7 @@
                             <td class="text-center pt-3-half"><a href="{{item.link}}">{{item.link}}</a></td>
                             <td class="text-center pt-3-half">{{item.time}}</td>
                             <td>
-                                <span class="table-add float-right mb-3 mr-2"><a href="" class="text-success"><i
+                                <span class="table-add float-right mb-3 mr-2"><a href="/appointment/{{item.user.id}}" class="text-success"><i
                                 class="fas fa-edit fa-2x" aria-hidden="true"></i></a></span>
                             </td>
                         </tr>
@@ -30,6 +31,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <br><br>
@@ -42,8 +44,9 @@
                 <hr> {% for item in client %}
                 <!-- <img class="card-img-top" src="{{item.counsellor.profile_photo.url}}" alt=""> -->
                 <div class="card-body">
+                    {% if item.counsellor %}
                     <h4 class="card-title">Dr. {{item.counsellor.user.username}}</h4>
-                    <a href="#" class="btn btn-primary">Change counsellor</a>
+                    <a href="/change/{{user.id}}/" class="btn btn-primary">Change counsellor</a> {% endif %}
                 </div>
                 {% endfor %}
             </div>
@@ -55,11 +58,19 @@
                 <!-- <img class="card-img-top" src="{{item.group.image.url}}" alt=""> -->
                 <div class="card-body">
                     <h4 class="card-title">{{item.group.name}}</h4>
-                    <a href="#" class="btn btn-primary">View group</a>
+                    {% if item.group %}
+                    <a href="/group/chat/{{item.group.id}}" class="btn btn-primary">View group</a> {% else %}
+                    <h6>None</h6>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
         </div>
+        {% else %}
+        <div class="container">
+            <h5>Your medical sheet will be availed once your counsellor adds you as patient</h5>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
