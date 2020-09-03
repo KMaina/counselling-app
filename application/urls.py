@@ -13,14 +13,13 @@ urlpatterns=[
 
     #client urls
     url(r'^client/$', views.client, name='client'),
-    # url(r'^clients/home/$', views.client_home, name='client_home'),
-    url(r'^clients/chat/$', views.chat, name='chat'),
+    url(r'^group/chat/(\d+)/$', views.chat, name='chat'),
+    url(r'^change/(\d+)/$', views.change, name='change'),
+    url(r'^appointment/(\d+)/$', views.book, name='book'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),
     url(r'^counsellors/support_group/$', views.support_group, name='c_group'),
-
-    url(r'^counsellors/client_med/$', views.client_med, name='client_med'),
     url(r'^counsellors/contact/$', views.contact, name='contact'),
     url(r'^edit/(\d+)/$', views.edit, name='edit'),
     url(r'^counsellors/client_data/$', views.display, name='display'),

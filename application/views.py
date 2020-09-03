@@ -59,16 +59,58 @@ def client(request):
     client = Client.objects.filter(user=current_user.id)
     return render (request, 'client/client.html', {'client':client})
 
-# def client_med(request):
-#     medication = Client.objects.all()
-#     return render(request, 'counsellor/client-med.html', {'medication':medication})
-
 def contact(request):
-    
     return render(request, 'counsellor/counsellor-contact.html')
 
-def chat(request):
-    return render(request, 'client/chat.html')
+def chat(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=current_user.id)
+    grp = SupportGroup.objects.get(id=id)
+    messages = Discussion.objects.filter(group=id).all()
+    if request.method == 'POST':
+        form = Forum(request.POST)
+        if form.is_valid():
+            discuss = form.save(commit=False)
+            discuss.sender = client
+            discuss.group = grp
+            discuss.save()
+        return redirect('client')
+    else:
+        form = Forum()
+    return render(request, 'client/chat.html', {'form':form, 'client':client, 'messages':messages})
+
+
+def change(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=id)
+    if request.method == 'POST':
+        form = ChangeDoctor(request.POST)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = client.user
+            edit.save()
+        return redirect('client')
+    else:
+        form = ChangeDoctor()
+    return render(request, 'client/change_doctor.html',{"form":form})
+
+
+def book(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=id)
+    dr = client.counsellor
+    if request.method == 'POST':
+        form = Appointment(request.POST)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = client.user
+            edit.counsellor = dr
+            edit.save()
+        return redirect('client')
+    else:
+        form = Appointment()
+    return render(request, 'client/appointment.html',{"form":form})
+
 
 #counsellor views
 class CounsellorSignUpView(CreateView):

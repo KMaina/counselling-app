@@ -1,15 +1,32 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+<div class="container chat-popup">
+    {% if client.group %}
+    <div class="text-center">
+        <h4 class="font-weight-bold text-center">{{client.group.name}}</h4>
+        <h6>Welcome to The Discussion</h6>
+        <br>
+    </div>
+    {% endif %}
 
-{% block content %}
-<div class="chat-popup" id="myForm">
-    <form action="" class="form-container">
-      <h1>Chat</h1>
-  
-      <label for="msg"><b>Message</b></label>
-      <textarea placeholder="Type message.." name="msg" required></textarea>
-  
-      <button type="submit" class="btn">Send</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    </form>
-  </div>
+
+    <!--  -->
+    {% if messages %} {% for item in messages %}
+    <div class="box darker">
+        <!-- <img src="/w3images/bandmember.jpg" alt="Avatar"> -->
+        <p>{{item.message}}</p>
+        <span class="time-right">{{item.time|date}} ~ by {{item.sender.user.username}}</span>
+    </div>
+    {% endfor %} {% else %}
+    <h6 class="text-center text-primary">You are the first one here</h6>
+    {% endif %}
+
+    <div class="col-md-6 p-5 align-self-center">
+
+
+        <form method="POST" class="form-group">
+            {% csrf_token %} {{ form|crispy }}
+            <button type="submit" class="btn">SEND</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
