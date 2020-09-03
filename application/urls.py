@@ -16,6 +16,7 @@ urlpatterns=[
     url(r'^group/chat/(\d+)/$', views.chat, name='chat'),
     url(r'^change/(\d+)/$', views.change, name='change'),
     url(r'^appointment/(\d+)/$', views.book, name='book'),
+    url(r'^clients/profile/$', views.profile, name='profile'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),

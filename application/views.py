@@ -220,3 +220,7 @@ def edit_group(request, id):
     else:
         form = EditGroup()
     return render(request, 'counsellor/edit_group.html', {'form':form})
+
+
+def profile(request):
+    return render(request, 'client/profile.html')
