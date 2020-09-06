@@ -92,3 +92,11 @@ const $tableID = $('#table');
    // Output the result
    $EXPORT.text(JSON.stringify(data));
  });
+
+ function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}

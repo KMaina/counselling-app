@@ -7,12 +7,13 @@ from .models import *
 from .forms import *
 
 
+
 def home(request):
     if request.user.is_authenticated:
         if request.user.is_counsellor:
             return redirect('counsellor_home')
         else:
-            return redirect('client_home')
+            return redirect('client')
     
     return render(request, 'index.html')
 
@@ -26,7 +27,7 @@ def join(request):
         if request.user.is_counsellor:
             return redirect('counsellor_home')
         else:
-            return redirect('client_home')
+            return redirect('client')
     return render(request, 'choice.html')
 
 
@@ -47,14 +48,68 @@ class ClientSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('client_home')
-
-def client_home(request):
-    return render(request, 'client/index.html')
+        return redirect('client')
 
 def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
 
+@client_required
+def client(request):
+    current_user = request.user
+    client = Client.objects.filter(user=current_user.id)
+    return render (request, 'client/client.html', {'client':client})
+
+def contact(request):
+    return render(request, 'counsellor/counsellor-contact.html')
+
+def chat(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=current_user.id)
+    grp = SupportGroup.objects.get(id=id)
+    messages = Discussion.objects.filter(group=id).all()
+    if request.method == 'POST':
+        form = Forum(request.POST)
+        if form.is_valid():
+            discuss = form.save(commit=False)
+            discuss.sender = client
+            discuss.group = grp
+            discuss.save()
+        return redirect('client')
+    else:
+        form = Forum()
+    return render(request, 'client/chat.html', {'form':form, 'client':client, 'messages':messages})
+
+
+def change(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=id)
+    if request.method == 'POST':
+        form = ChangeDoctor(request.POST)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = client.user
+            edit.save()
+        return redirect('client')
+    else:
+        form = ChangeDoctor()
+    return render(request, 'client/change_doctor.html',{"form":form})
+
+
+def book(request, id):
+    current_user = request.user
+    client = Client.objects.get(user=id)
+    dr = client.counsellor
+    if request.method == 'POST':
+        form = Appointment(request.POST)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = client.user
+            edit.counsellor = dr
+            edit.save()
+        return redirect('client')
+    else:
+        form = Appointment()
+    return render(request, 'client/appointment.html',{"form":form})
 
 
 #counsellor views
@@ -69,6 +124,8 @@ class CounsellorSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        person = User.objects.get(id=user.id)
+        Counsellor.objects.create(user=person)
         login(self.request, user)
         return redirect('counsellor_home')
 
@@ -88,11 +145,20 @@ def support_group(request):
         form=CreateGroup()
     return render(request, 'counsellor/support_group.html', {'form':form})
 
+
+@counsellor_required
 def group_list(request):
     groups = SupportGroup.objects.all()
     return render(request, 'counsellor/group_list.html', {'groups':groups})
 
 
+@counsellor_required
+def client_group(request):
+    client = Client.objects.all()
+    return render(request, 'counsellor/client_group.html', {"client": client})
+
+
+@counsellor_required
 def edit(request, id):
     current_user = request.user
     client = Client.objects.get(user=id)
@@ -109,10 +175,14 @@ def edit(request, id):
        form = EditForm()
     return render(request, 'counsellor/counsellor_edit.html',{"form":form})
 
+
+@counsellor_required
 def display(request):
     sessions = Client.objects.filter(counsellor=request.user.id).all()
     return render(request, 'counsellor/client-med.html',{'sessions':sessions})
 
+
+@counsellor_required
 def addclient(request):
     current_user = request.user
     dr = Counsellor.objects.get(user=current_user.id)
@@ -127,3 +197,25 @@ def addclient(request):
     else:
         form = AddClientForm()
     return render(request, 'counsellor/add_client_form.html',{"form":form})
+
+
+@counsellor_required
+def delete_group(request, id):
+    grp = SupportGroup.objects.filter(id=id)
+    grp.delete()
+    return redirect('group_list')
+
+
+@counsellor_required
+def edit_group(request, id):
+    grp = SupportGroup.objects.get(id=id)
+    if request.method == 'POST':
+        form = EditGroup(request.POST)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.id = id
+            edit.save()
+        return redirect('group_list')
+    else:
+        form = EditGroup()
+    return render(request, 'counsellor/edit_group.html', {'form':form})

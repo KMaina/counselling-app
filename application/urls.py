@@ -12,13 +12,18 @@ urlpatterns=[
     url(r'^counsellors/list/$', views.counsel, name='counsellor_list'),
 
     #client urls
-    url(r'^clients/home/$', views.client_home, name='client_home'),
-    
+    url(r'^client/$', views.client, name='client'),
+    url(r'^group/chat/(\d+)/$', views.chat, name='chat'),
+    url(r'^change/(\d+)/$', views.change, name='change'),
+    url(r'^appointment/(\d+)/$', views.book, name='book'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),
     url(r'^counsellors/support_group/$', views.support_group, name='c_group'),
+    url(r'^counsellors/contact/$', views.contact, name='contact'),
     url(r'^edit/(\d+)/$', views.edit, name='edit'),
+    url(r'^delete/group(\d+)/$', views.delete_group, name='delete_group'),
+    url(r'^edit/group/(\d+)/$', views.edit_group, name='edit_group'),
     url(r'^counsellors/client_data/$', views.display, name='display'),
     url(r'^counsellors/group_list/$', views.group_list, name='group_list'),
     url(r'^addclient/$', views.addclient, name='addclient'),

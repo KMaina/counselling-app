@@ -88,7 +88,7 @@ With all environment variables changed to suit your local copy of this repositor
 
 * [Karen Ngala](https://github.com/KarenNgala)
 * [Mercy Njoroge](https://github.com/Mercy-Njoroge)
-* [Joan Nanala ](https://github.com/kangalah)
+* [Joan Nanjala ](https://github.com/kangalah)
 * [Maratah Njoroge](https://github.com/MaratahNjoroge)
 * [Josphat Mwangi](https://github.com/josphat-mwangi)
 
