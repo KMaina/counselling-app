@@ -219,3 +219,24 @@ def edit_group(request, id):
     else:
         form = EditGroup()
     return render(request, 'counsellor/edit_group.html', {'form':form})
+
+def add_comment(request,id):
+   current_user = request.user
+   client = Client.objects.get(user = current_user)
+   message = Discussion.get_single_photo(id=id)
+   if request.method == 'POST':
+       form = CommentForm(request.POST)
+       print(form)
+       if form.is_valid():
+           comment = form.save(commit=False)
+           comment.user = client
+           comment.discussion.message = message
+           comment.save()
+       return redirect('client')
+   else:
+       form = CommentForm()
+       return render(request,'client/new_comment.html',{"form":form,"message":message})
+def comments(request,id):
+   comments = Comments.get_comments(id)
+   number = len(comments)
+   return render(request,'client/comment.html',{"comments":comments,"number":number})

@@ -98,3 +98,10 @@ class EditGroup(forms.ModelForm):
     class Meta:
         model = SupportGroup
         fields = ['name', 'description']
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['comment']
+

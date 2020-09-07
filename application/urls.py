@@ -16,6 +16,8 @@ urlpatterns=[
     url(r'^group/chat/(\d+)/$', views.chat, name='chat'),
     url(r'^change/(\d+)/$', views.change, name='change'),
     url(r'^appointment/(\d+)/$', views.book, name='book'),
+    url(r'^new_comment/(\d+)/$' ,views.add_comment,name='newComment'),
+    url(r'^comment/(\d+)/$' ,views.comments,name='comments'),
     
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),

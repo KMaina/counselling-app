@@ -14,7 +14,10 @@
     <div class="box darker">
         <!-- <img src="/w3images/bandmember.jpg" alt="Avatar"> -->
         <p>{{item.message}}</p>
+
         <span class="time-right">{{item.time|date}} ~ by {{item.sender.user.username}}</span>
+        <a href="/comment/{{item.id}}"><i class="fa fa-comment" aria-hidden="true"></i></a>
+        <a href="/new_comment/{{item.id}}"><i class="fa fa-comment" aria-hidden="true"></i></a>
     </div>
     {% endfor %} {% else %}
     <h6 class="text-center text-primary">You are the first one here</h6>

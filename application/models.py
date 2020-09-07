@@ -49,5 +49,22 @@ class Discussion(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     group = models.ForeignKey(SupportGroup, on_delete=models.CASCADE)
 
+    @classmethod
+    def get_single_photo(cls,id):
+        message = cls.objects.get(pk=id)
+        return message
+
     def __str__(self):
         return f'Message by {self.sender}'
+
+
+class Comments(models.Model):
+    comment = models.TextField()
+    discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE)
+    user = models.ForeignKey('Client', on_delete=models.CASCADE)
+
+    @classmethod
+    def get_comments(cls,id):
+        comments = cls.objects.filter(id = id).all()
+        return comments
+        
