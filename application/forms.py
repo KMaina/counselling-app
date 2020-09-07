@@ -97,9 +97,9 @@ class EditGroup(forms.ModelForm):
         model = SupportGroup
         fields = ['description']
 
-class ClientProfileForm(forms.ModelForm):
-    class Meta:
-        model = Client
-        fields = '__all__'
-        exclude = [ 'user' ]
+# class ClientProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Client
+#         fields = '__all__'
+#         exclude = [ 'user' ]
 

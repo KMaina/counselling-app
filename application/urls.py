@@ -15,10 +15,10 @@ urlpatterns=[
     #client urls
     url(r'^client/$', views.client, name='client'),
     url(r'^group/chat/(\d+)/$', views.chat, name='chat'),
-    
     url(r'^change/(\d+)/$', views.change, name='change'),
     url(r'^appointment/(\d+)/$', views.book, name='book'),
-    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^profile/(\d+)/$', views.profile, name='profile'),
+
     #counsellor urls
     url(r'^counsellors/home/$', views.counsellor_home, name='counsellor_home'),
     url(r'^counsellors/support_group/$', views.support_group, name='c_group'),
