@@ -1,8 +1,13 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
-from django.views.generic import CreateView
+from django.views.generic import TemplateView, CreateView, View
 from .decorators import client_required, counsellor_required
 from django.contrib.auth import login
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.encoding import force_text, force_bytes
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
 from .models import *
 from .forms import *
 
@@ -47,8 +52,34 @@ class ClientSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        login(self.request, user)
-        return redirect('client')
+        user.is_active = False
+        user.save()
+        current_site = get_current_site(self.request)
+        mail_subject = 'Activate your Counsellor account.'
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = account_activation_token.make_token(user)
+        activation_link = "{0}/activate_pat/{1}/{2}".format(current_site, uid, token)
+        message = "Hello {0},\n Activate your account by clicking {1}".format(user.username, activation_link)
+        to_email = form.cleaned_data.get('email')
+        email = EmailMessage(mail_subject, message, to=[to_email])
+        email.send()
+        return render(self.request, 'registration/activate.html')
+
+class ClientActivate(View):
+    def get(self, request, uidb64, token, *args, **kwargs):
+        try:
+            uid = force_text(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+        if user is not None and account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+            login(request, user)
+            return redirect('client')
+        else:
+            return render(self.request, 'registration/failed.html')
+
 
 def counsel(request):
     return render(request, 'counsellor/counsellors_list.html')
@@ -123,11 +154,37 @@ class CounsellorSignUpView(CreateView):
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
-        user = form.save()
-        person = User.objects.get(id=user.id)
-        Counsellor.objects.create(user=person)
-        login(self.request, user)
-        return redirect('counsellor_home')
+        user = form.save(commit=False)
+        user.is_active = False
+        user.save()
+        current_site = get_current_site(self.request)
+        mail_subject = 'Activate your Counsellor account.'
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = account_activation_token.make_token(user)
+        activation_link = "{0}/activate_doc/{1}/{2}".format(current_site, uid, token)
+        message = "Hello Dr. {0},\nActivate your account by clicking {1}".format(user.username, activation_link)
+        to_email = form.cleaned_data.get('email')
+        email = EmailMessage(mail_subject, message, to=[to_email])
+        email.send()
+        return render(self.request, 'registration/activate.html')
+
+class CounsellorActivate(View):
+    def get(self, request, uidb64, token, *args, **kwargs):
+        try:
+            uid = force_text(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+        if user is not None and account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+            Counsellor.objects.create(user=user)
+            login(request, user)
+            context = {'uidb64':uidb64, 'token':token}
+            return redirect('counsellor_home')
+        else:
+            return render(self.request, 'registration/failed.html')
+
 
 @counsellor_required
 def counsellor_home(request):
@@ -214,8 +271,13 @@ def edit_group(request, id):
         if form.is_valid():
             edit = form.save(commit=False)
             edit.id = id
+            edit.name = grp.name
             edit.save()
         return redirect('group_list')
     else:
         form = EditGroup()
     return render(request, 'counsellor/edit_group.html', {'form':form})
+
+
+def profile(request):
+    return render(request, 'client/profile.html')

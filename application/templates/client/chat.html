@@ -16,7 +16,8 @@
         <p>{{item.message}}</p>
         <span class="time-right">{{item.time|date}} ~ by {{item.sender.user.username}}</span>
     </div>
-    {% endfor %} {% else %}
+    <hr>
+    <br> {% endfor %} {% else %}
     <h6 class="text-center text-primary">You are the first one here</h6>
     {% endif %}
 
