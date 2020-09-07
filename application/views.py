@@ -54,7 +54,7 @@ class ClientSignUpView(CreateView):
         user = form.save()
         user.is_active = False
         user.save()
-        current_site = get_current_site(self.request)
+        current_site = 'https://well-heard.herokuapp.com'
         mail_subject = 'Activate your Counsellor account.'
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
