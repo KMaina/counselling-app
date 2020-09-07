@@ -1,10 +1,15 @@
 from django.test import TestCase
 from .models import *
+from django.urls import path
+from django.core.files.uploadedfile import SimpleUploadedFile
+import os
+from django.conf import settings
 
 class TestUser(TestCase):
     '''test class for AbstractUser model'''
     def setUp(self):
         self.user = User.objects.create_user(username='Linda', password='LindaMaina123', is_client=True)
+        self.user = User.objects.create_user(username='Kay', password='KayLyne123', is_counsellor=True)
 
     def tearDown(self):
         self.user.delete()
@@ -23,6 +28,12 @@ class TestClient(TestCase):
         self.another_user = User.objects.create_user(username='Doktari', password='DRMaybelle456', is_counsellor=True)
         self.another_user.save()
 
+        self.problem = Issue(issue='Lack of sleep')
+        self.problem.save()
+
+        self.medicine = medication(medication='Panadol')
+        self.medicine.save()
+
         self.group = SupportGroup(name='Alcoholics Anonymous')
         self.group.save()
 
@@ -34,6 +45,8 @@ class TestClient(TestCase):
     def tearDown(self):
         self.user.delete()
         self.another_user.delete()
+        self.problem.delete()
+        self.medicine.delete()
         self.group.delete()
         self.doctor.delete()
 
@@ -63,7 +76,14 @@ class TestSupportGroup(TestCase):
     def setUp(self):
         self.group = SupportGroup(name='Suicide Loss Survivors')
         self.group.save()
-
+    
+    testImagePath = os.path.join(settings.BASE_DIR, 'static/images/healing.jpg')
+    testPhoto = {
+            "owner" : ['username'],
+            "album" : ['name'],
+            "name" : "Test Photo",
+            "image" : SimpleUploadedFile(name='healing.jpg', content=open(testImagePath, 'rb').read(), content_type='image/jpg')
+        }
     def tearDown(self):
         self.group.delete()
 
@@ -71,3 +91,4 @@ class TestSupportGroup(TestCase):
         self.assertIsInstance(self.group, SupportGroup)
         self.assertEqual(self.group.name, 'Suicide Loss Survivors')
         self.assertEqual(len(SupportGroup.objects.all()), 1)
+    
