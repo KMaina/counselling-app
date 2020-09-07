@@ -220,3 +220,14 @@ def edit_group(request, id):
     else:
         form = EditGroup()
     return render(request, 'counsellor/edit_group.html', {'form':form})
+
+def profile(request):
+    client = request.user.client
+    form = ClientProfileForm(instance=client)
+
+    if request.method == 'POST':
+        form = ClientProfileForm(request.POST, request.FILES, instance=client)
+        if form.is_valid():
+            form.save()
+    context = {'form':form}
+    return render(request, 'client/profile.html', context)
