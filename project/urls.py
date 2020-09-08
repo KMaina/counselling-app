@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^accounts/signup/$', views.SignUpView.as_view(), name='signup'),
     path('accounts/register/client/', views.ClientSignUpView.as_view(), name='client_signup'),
     path('accounts/register/counsellor/', views.CounsellorSignUpView.as_view(), name='counsellor_signup'),
+    path('activate_doc/<uidb64>/<token>/', views.CounsellorActivate.as_view(), name='activate'),
+    path('activate_pat/<uidb64>/<token>/', views.ClientActivate.as_view(), name='activate'),
 ]
