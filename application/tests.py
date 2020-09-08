@@ -1,10 +1,15 @@
 from django.test import TestCase
 from .models import *
+from django.urls import path
+from django.core.files.uploadedfile import SimpleUploadedFile
+import os
+from django.conf import settings
 
 class TestUser(TestCase):
     '''test class for AbstractUser model'''
     def setUp(self):
         self.user = User.objects.create_user(username='Linda', password='LindaMaina123', is_client=True)
+        self.user = User.objects.create_user(username='Kay', password='KayLyne123', is_counsellor=True)
 
     def tearDown(self):
         self.user.delete()
@@ -63,7 +68,7 @@ class TestSupportGroup(TestCase):
     def setUp(self):
         self.group = SupportGroup(name='Suicide Loss Survivors')
         self.group.save()
-
+    
     def tearDown(self):
         self.group.delete()
 
@@ -71,3 +76,32 @@ class TestSupportGroup(TestCase):
         self.assertIsInstance(self.group, SupportGroup)
         self.assertEqual(self.group.name, 'Suicide Loss Survivors')
         self.assertEqual(len(SupportGroup.objects.all()), 1)
+    
+
+class TestDiscussion(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='Patient', password='Patient456', is_client=True)
+        self.user.save()
+        self.another_user = User.objects.create_user(username='Doktari', password='DRMaybelle456', is_counsellor=True)
+        self.another_user.save()
+
+        self.group = SupportGroup(name='Suicide Loss Survivors')
+        self.group.save()
+
+        self.doctor = Counsellor(user=self.another_user)
+        self.doctor.save()
+
+        self.client = Client(user=self.user, group=self.group, counsellor=self.doctor)
+        self.client.save()
+
+        self.discussion = Discussion(message='some text', sender=self.client, group=self.group)
+
+    def tearDown(self):
+        self.user.delete()
+        self.group.delete()
+        self.client.delete()
+
+    def test_discussion_creation(self):
+        self.discussion.save()
+        self.assertEqual(len(Discussion.objects.all()), 1)
+        self.assertEqual(self.discussion.group, self.client.group)
