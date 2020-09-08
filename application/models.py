@@ -4,7 +4,6 @@ from django.utils.html import mark_safe, escape
 from datetime import timedelta
 
 
-
 class User(AbstractUser):
     is_client = models.BooleanField(default=False)
     is_counsellor = models.BooleanField(default=False)
@@ -29,10 +28,11 @@ class Client(models.Model):
 
 class Counsellor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    profile_photo = models.ImageField(default='default_avatar.jpg', upload_to='profile_pics')
+    profile_photo = models.ImageField(default='default.png', upload_to='profile_pics')
 
     def __str__(self):
         return f"Dr. {self.user.username}"
+
 
 class SupportGroup(models.Model):
     name = models.CharField(max_length=255)
@@ -43,3 +43,11 @@ class SupportGroup(models.Model):
         return f"{self.name}"
 
   
+class Discussion(models.Model):
+    message = models.TextField()
+    sender = models.ForeignKey(Client, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
+    group = models.ForeignKey(SupportGroup, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Message by {self.sender}'

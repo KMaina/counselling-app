@@ -69,3 +69,30 @@ class AddClientForm(forms.ModelForm):
     class Meta:
         model = Client
         fields = ['user', 'issue']
+
+
+class ChangeDoctor(forms.ModelForm):
+    counsellor = forms.ModelChoiceField(queryset=Counsellor.objects.all(), empty_label=None)
+    class Meta:
+        model = Client
+        fields = ['counsellor']
+
+
+class Appointment(forms.ModelForm):
+    time = forms.DateTimeField(widget=DateTimePicker())
+    class Meta:
+        model = Client
+        fields = ['link', 'time']
+
+
+class Forum(forms.ModelForm):
+    message = forms.CharField()
+    class Meta:
+        model = Discussion
+        fields = ['message']
+
+
+class EditGroup(forms.ModelForm):
+    class Meta:
+        model = SupportGroup
+        fields = ['description']

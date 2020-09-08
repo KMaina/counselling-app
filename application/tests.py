@@ -28,12 +28,6 @@ class TestClient(TestCase):
         self.another_user = User.objects.create_user(username='Doktari', password='DRMaybelle456', is_counsellor=True)
         self.another_user.save()
 
-        self.problem = Issue(issue='Lack of sleep')
-        self.problem.save()
-
-        self.medicine = medication(medication='Panadol')
-        self.medicine.save()
-
         self.group = SupportGroup(name='Alcoholics Anonymous')
         self.group.save()
 
@@ -45,8 +39,6 @@ class TestClient(TestCase):
     def tearDown(self):
         self.user.delete()
         self.another_user.delete()
-        self.problem.delete()
-        self.medicine.delete()
         self.group.delete()
         self.doctor.delete()
 
@@ -77,13 +69,6 @@ class TestSupportGroup(TestCase):
         self.group = SupportGroup(name='Suicide Loss Survivors')
         self.group.save()
     
-    testImagePath = os.path.join(settings.BASE_DIR, 'static/images/healing.jpg')
-    testPhoto = {
-            "owner" : ['username'],
-            "album" : ['name'],
-            "name" : "Test Photo",
-            "image" : SimpleUploadedFile(name='healing.jpg', content=open(testImagePath, 'rb').read(), content_type='image/jpg')
-        }
     def tearDown(self):
         self.group.delete()
 
@@ -92,3 +77,31 @@ class TestSupportGroup(TestCase):
         self.assertEqual(self.group.name, 'Suicide Loss Survivors')
         self.assertEqual(len(SupportGroup.objects.all()), 1)
     
+
+class TestDiscussion(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='Patient', password='Patient456', is_client=True)
+        self.user.save()
+        self.another_user = User.objects.create_user(username='Doktari', password='DRMaybelle456', is_counsellor=True)
+        self.another_user.save()
+
+        self.group = SupportGroup(name='Suicide Loss Survivors')
+        self.group.save()
+
+        self.doctor = Counsellor(user=self.another_user)
+        self.doctor.save()
+
+        self.client = Client(user=self.user, group=self.group, counsellor=self.doctor)
+        self.client.save()
+
+        self.discussion = Discussion(message='some text', sender=self.client, group=self.group)
+
+    def tearDown(self):
+        self.user.delete()
+        self.group.delete()
+        self.client.delete()
+
+    def test_discussion_creation(self):
+        self.discussion.save()
+        self.assertEqual(len(Discussion.objects.all()), 1)
+        self.assertEqual(self.discussion.group, self.client.group)

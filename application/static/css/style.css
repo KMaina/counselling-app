@@ -211,24 +211,6 @@ main {
     height: 100%;
 }
 
-
-/* #wave {
-  position: absolute;
-  height: 256.69px;
-  width: 1440.84px;
-  left: -1px;
-  top: -49px;
-  background: #e5e5e5;
-} */
-
-
-/* .wave{
-  background-image: url('/static/images/navbar.png');
-  padding-bottom: 10px;
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
-
 .nav-item {
     margin-left: 4%;
     margin-right: 4%;
@@ -343,3 +325,180 @@ tr:nth-child(even) {
     padding-top: 1.4rem;
 }
 
+#Contact-Us {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTiwQpZzpw6MtbDr_GWFdR96BjtwIjyuumzoQ&usqp=CAU');
+    background-size: cover;
+    display: cover;
+    background-position: center center;
+    padding: 10vh;
+    color: white;
+    text-align: center;
+}
+
+input[type=text],
+input[type=email],
+#b_comment {
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    font-family: 'Copse', serif;
+}
+
+input[type=text] {
+    background-color: transparent;
+    color: white;
+}
+
+textarea[type=text] {
+    background-color: transparent;
+    color: white;
+}
+
+input[type=email] {
+    background-color: transparent;
+    color: white;
+}
+
+.submit {
+    position: absolute;
+    text-align: center;
+    padding-left: 40%;
+}
+
+
+/* padding-top: 1.4rem;
+} */
+
+
+/* {box-sizing: border-box;} */
+
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+
+/* The popup chat - hidden by default */
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+
+/* Add styles to the form container */
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+
+/* Full-width textarea */
+
+.form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 200px;
+}
+
+
+/* When the textarea gets focus, do something */
+
+.form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+
+/* Set a style for the submit/login button */
+
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+
+/* Add a red background color to the cancel button */
+
+.form-container .cancel {
+    background-color: red;
+}
+
+
+/* Add some hover effects to buttons */
+
+.form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
+}
+
+
+/* Chat */
+
+.box {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+
+/* Darker chat container */
+
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+
+/* Clear floats */
+
+.box::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* Style time text */
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+
+/* Style time text */
+
+.time-left {
+    float: left;
+    color: #999;
+}
