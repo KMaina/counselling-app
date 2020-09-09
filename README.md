@@ -1,5 +1,6 @@
 # Counselling App
-This web app will be focusing on suicide prevention by offering emotional support through counsellors to those who may be in distress and therefore in danger of dying by suicide as well as creating awareness on suicide within communities during this pandemic.
+This web app will be focusing on suicide prevention by offering emotional support through counsellors to those who may be in distress and therefore in danger of dying by suicide as well as creating awareness on suicide within communities during this pandemic. <br>
+*Live link: https://well-heard.herokuapp.com/*
 
 ## Getting Started
 
@@ -43,7 +44,12 @@ DB_PASSWORD='password'
 DB_HOST='127.0.0.1'
 MODE='dev'
 ALLOWED_HOSTS='*'
-DISABLE_COLLECTSTATIC=1 
+DISABLE_COLLECTSTATIC=1
+EMAIL_USE_TLS=True
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_HOST_USER=user@gmail.com
+EMAIL_HOST_PASSWORD=password
 ```
 
 3.Apply initial migrations
