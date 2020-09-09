@@ -53,9 +53,10 @@ class EditForm(forms.ModelForm):
     time = forms.DateTimeField(widget=DateTimePicker(), required=False)
     group = forms.ModelChoiceField(required=False,queryset=SupportGroup.objects ,empty_label=None)
     link = forms.CharField(required=False)
+    medication = forms.CharField()
     class Meta:
         model = Client
-        fields = ['medication', 'group', 'time', 'link']
+        fields = [ 'group', 'medication', 'time', 'link']
 
 
 class CreateGroup(forms.ModelForm):
@@ -66,6 +67,7 @@ class CreateGroup(forms.ModelForm):
         
 class AddClientForm(forms.ModelForm):
     user = forms.ModelChoiceField(queryset=User.objects.filter(is_client=True), empty_label=None)
+    issue = forms.CharField()
     class Meta:
         model = Client
         fields = ['user', 'issue']
@@ -93,6 +95,7 @@ class Forum(forms.ModelForm):
 
 
 class EditGroup(forms.ModelForm):
+    description = forms.CharField()
     class Meta:
         model = SupportGroup
         fields = ['description']
